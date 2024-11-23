@@ -1,4 +1,4 @@
-package personnages;
+package petitPrince;
 
 import asteroide.Sujet;
 import asteroide.console.ConsoleJavaBoy;
@@ -14,6 +14,7 @@ public class PetitPrince0 implements Sujet {
 		this.nom = "Petit Prince";
 		this.argent = 100;
 		cpt++;
+		console = new ConsoleJavaBoy(this);
 	}
 
 	@Override
@@ -28,9 +29,8 @@ public class PetitPrince0 implements Sujet {
 
 	@Override
 	public void run() {
-		console.parler(nom);
+		console.parler(nom + cpt);
 		console.seDirigerVers(0);
-	
 	}
 
 }
