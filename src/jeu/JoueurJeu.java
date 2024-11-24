@@ -1,6 +1,6 @@
 package jeu;
 
-import intefaces.Joueur;
+import interfaces.Joueur;
 
 public class JoueurJeu implements Joueur{
 

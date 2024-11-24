@@ -2,7 +2,7 @@ package main;
 
 import petitPrince.PetitPrince0;
 import tests.TestArbitre;
-import intefaces.Joueur;
+import interfaces.Joueur;
 import jeu.JeuDe;
 import jeu.JoueurJeu;
 import jeu.JeuShifumi;
@@ -36,17 +36,22 @@ public class Run3PetitsPrinces {
 		TestArbitre.arbitrer(joueur1, joueur2, jeuShifumi);
 	}
 	
+	private static void scenario4() {
+		PetitPrince prince = new PetitPrince("PrinceMain");
+		prince.run();
+	}
+	
 	
 	public static void main(String[] args) {
 		System.out.println("BEGIN : Petit Prince 2 \n");
 		
 		scenario0();
-		//scenario1();
+		scenario1();
 		
 		System.out.println("\nEND \n");
 		
 		System.out.println("test des jeux1");
-		scenario3();
+		//scenario4();
 		
 	}
 

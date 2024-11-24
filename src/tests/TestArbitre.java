@@ -1,6 +1,6 @@
 package tests;
 
-import intefaces.Joueur;
+import interfaces.Joueur;
 import jeu.JeuSimple;
 
 public class TestArbitre implements Joueur{

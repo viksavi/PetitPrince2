@@ -1,7 +1,10 @@
 package asteroide.console;
 
+import java.rmi.RemoteException;
+
 import asteroide.Sujet;
-import petitPrince.jeu.JeuSimple;
+import asteroide.serveur.VueSujet;
+import jeu.JeuSimple;
 
 /**
  * 
@@ -67,6 +70,16 @@ public class ConsoleJavaBoy  {
 	 */
 	public void jouer(JeuSimple jeu, int ref){
 		qc.jouer(jeu,ref);
+	}
+	
+	public VueSujet getVue() {
+		try {
+			return this.qc.update();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

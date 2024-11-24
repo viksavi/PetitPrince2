@@ -12,8 +12,8 @@ import java.util.Hashtable;
 import java.util.Random;
 
 import asteroide.Sujet;
-import petitPrince.jeu.JeuSimple;
-import petitPrince.jeu.Joueur;
+import jeu.JeuSimple;
+import interfaces.Joueur;
 import asteroide.serveur.Asteroide325;
 import asteroide.serveur.VueSujet;
 
