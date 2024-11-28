@@ -22,7 +22,7 @@ public class Run3PetitsPrinces {
 	private static void scenario1() {
 		System.out.println("Creation Petit Princes : \n");
 		
-		for (int i = 1; i <= 9; i++) {
+		for (int i = 1; i <= 10; i++) {
 			new PetitPrince("PP" + i);
 		}
 	}
@@ -45,7 +45,7 @@ public class Run3PetitsPrinces {
 	public static void main(String[] args) {
 		System.out.println("BEGIN : Petit Prince 2 \n");
 		
-		scenario0();
+		//scenario0();
 		scenario1();
 		
 		System.out.println("\nEND \n");

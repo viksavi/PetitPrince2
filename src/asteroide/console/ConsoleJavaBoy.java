@@ -72,14 +72,4 @@ public class ConsoleJavaBoy  {
 		qc.jouer(jeu,ref);
 	}
 	
-	public VueSujet getVue() {
-		try {
-			return this.qc.update();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 }

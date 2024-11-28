@@ -16,13 +16,12 @@ public class PetitPrince implements Sujet, Joueur {
 	private String nom;
 	private int argent;
 	private ConsoleJavaBoy console;
-	private ArrayList<Integer> sujetsConnus;
+	private ArrayList<Integer> sujetsConnus = new ArrayList<>();
 	
 	public PetitPrince(String nom) {
 		this.nom = nom;
 		this.argent = 100;
 		console = new ConsoleJavaBoy(this);
-		sujetsConnus = new ArrayList<>();
 	}
 
 	@Override
@@ -57,26 +56,26 @@ public class PetitPrince implements Sujet, Joueur {
 	}
 	
 	private int distanceChebyshev(int l, int c) {
-		int x = console.getVue().getX();
-		int y = console.getVue().getY();
-		return max(abs(x-l), abs(y-c));
+		return max(abs(10-l), abs(10-c));
 	}
 	
 	private int[] chercherPlusProche(int[][] vision) {
 		int min = Integer.MAX_VALUE;
-		int[] position = null;
+		int[] position = new int[2];
+		int sujet = 0;
 		for(int i = 0; i < vision.length; i++) {
 			for(int j = 0; j < vision[i].length; j++) {
-				int sujet = vision[i][j];
-				if(!sujetsConnus.contains(sujet) && sujet != 0) {
+				sujet = vision[i][j];
+				if(sujet > 0 && !sujetsConnus.contains(sujet)) {
 					int distance = distanceChebyshev(i, j);
 					if(distance < min) {
 						min = distance;
-						position[0] = min;
 					}
 				}
 			}
 		}
+		position[0] = min;
+		position[1] = sujet;
 		return position;
 		
 	}
@@ -95,20 +94,24 @@ public class PetitPrince implements Sujet, Joueur {
 	public void run() {
 		int[][] vision = console.regarder();
 		int[] sujet = chercherPlusProche(vision);
+		int distance = sujet[0];
+		int reference = sujet[1];
 		
-		if(sujet[0] <= 1) {
-			console.jouer(choisirRandomJeu(), sujet[0]);
+		if(distance <= 1) {
+			console.jouer(choisirRandomJeu(), reference);
+			//console.parler("Je joue au " + choisirRandomJeu().getNom());
+			sujetsConnus.add(reference);
 		} else {
-			if(sujet.length == 0) {
+			if(reference == 0) {
 				Random r = new Random();
 				console.seDirigerVers(r.nextInt(10));
+				console.parler("Je cherche quelqu'un pour jouer!");
 			} else {
-				console.seDirigerVers(sujet[0]);
+				console.seDirigerVers(reference);
+				console.parler("Je suis un sujet pour jouer avec lui!");
 			}
 		}
 		
-		console.parler(nom);
-		console.seDirigerVers(0);
 	}
 
 }
